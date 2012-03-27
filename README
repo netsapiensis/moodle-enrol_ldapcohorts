@@ -1,0 +1,11 @@
+New install
+-----------
+1a. Put the folder presenter inside your /moodle/enrol folder. 
+
+
+
+Update from an older version of Enrol LDAP Cohorts Plugin
+--------------------------------------------------
+1b. Simply overwrite the files in the /moodle/enrol/ldapcohorts directory with the new files. 
+
+2. From the admin page, click on the 'Notifications' link (it's in the left side) - this plugin will be automatically installed.
