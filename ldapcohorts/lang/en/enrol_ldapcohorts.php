@@ -54,7 +54,8 @@ $string['objectclass'] = 'objectClass used to search cohorts. Usually \'(objectC
 $string['objectclass_key'] = 'Object class';
 
 $string['phpldap_noextension'] = '<em>The PHP LDAP module does not seem to be present. Please ensure it is installed and enabled if you want to use this enrolment plugin.</em>';
-$string['pluginname'] = 'LDAP Cohorts sync';
+$string['pluginname'] = 'LDAP Cohort Synchronization';
+
 $string['pluginname_desc'] = '<p>You can use an LDAP server to automatically create users and put them into Moodle cohorts.</p><p>In the given LDAP path there are groups containing users. Every group will generate a cohort in Moodle.</p><p>The synchronization process will be executed within the moodle cron.</p><p>You can run it manually by clicking {$a}</p>';
 $string['report_email_html'] = '<p>{$a->ca} cohorts have been added</p><p>{$a->ce} cohorts already exist</p><p>{$a->ua} new users added into cohorts</p><p>{$a->ue} users already exist.</p>';
 $string['report_email_text'] = '{$a->ca} cohorts have been added, {$a->ce} cohorts already exist; {$a->ua} new users added into cohorts, {$a->ue} users already exist.';
