@@ -51,6 +51,7 @@ if ($ADMIN->fulltree) {
         $settings->add(new admin_setting_configtext('enrol_ldapcohorts/cohort_objectclass', get_string('objectclass_key', 'enrol_ldapcohorts'), get_string('objectclass', 'enrol_ldapcohorts'), '(objectClass=posixGroup)'));
         $settings->add(new admin_setting_configtext('enrol_ldapcohorts/cohort_contexts', get_string('cohort_contexts_key', 'enrol_ldapcohorts'), get_string('cohort_contexts', 'enrol_ldapcohorts'), ''));
         $settings->add(new admin_setting_configselect('enrol_ldapcohorts/cohort_search_sub', get_string('search_subcontexts_key', 'enrol_ldapcohorts'), get_string('cohort_search_sub', 'enrol_ldapcohorts'), key($yesno), $yesno));
+        $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldapcohorts/cohort_member_attribute', get_string('cohort_member_attribute_key', 'enrol_ldapcohorts'), get_string('cohort_member_attribute', 'enrol_ldapcohorts'), 'member', true));
         $cohortfields = array ('name', 'idnumber', 'description');
         foreach ($cohortfields as $field) {
             $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldapcohorts/cohort_'.$field, get_string('cohort_'.$field.'_key', 'enrol_ldapcohorts'), get_string('cohort_'.$field, 'enrol_ldapcohorts'), ($field == 'description' ? 'description' : ($field == 'name' ? 'cn' : '')), true));

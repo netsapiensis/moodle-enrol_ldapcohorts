@@ -42,7 +42,7 @@ class enrol_ldapcohorts_plugin extends enrol_plugin
             return $ldapconnection;
         }
 
-        print_error('auth_ldap_noconnect_all', 'enrol_ldapcohort', '', $debuginfo);
+        exit(get_string('auth_ldap_noconnect_all', 'enrol_ldapcohorts') . "\n DEBUG: " . $debuginfo);
         
         return false;
     }
@@ -160,9 +160,9 @@ class enrol_ldapcohorts_plugin extends enrol_plugin
                 $this->_cohorts [$moodle_cohort->idnumber] = $moodle_cohort;
                 @ob_flush();
                 flush();
-                if (!empty($cohort[$this->config->user_member_attribute]['count'])) {
-                    unset($cohort[$this->config->user_member_attribute]['count']);
-                    $this->sync_users($moodle_cohort, $cohort[$this->config->user_member_attribute]);
+                if (!empty($cohort[$this->get_config('cohort_member_attribute', 'member')]['count'])) {
+                    unset($cohort[$this->get_config('cohort_member_attribute', 'member')]['count']);
+                    $this->sync_users($moodle_cohort, $cohort[$this->get_config('cohort_member_attribute', 'member')]);
                 }
             }
         }
@@ -183,7 +183,7 @@ class enrol_ldapcohorts_plugin extends enrol_plugin
         $contexts = explode(';', $this->config->user_contexts);
         $user_filter = '(&('.$this->config->user_attribute.'=*)(|';
         foreach ($uid_in as $uid) {
-            $user_filter .= '(uid=' . $uid . ')';
+            $user_filter .= '(' . $this->config->user_member_attribute . '=' . $uid . ')';
         }
         $user_filter .= ')'.$this->config->user_objectclass.')';
         
@@ -392,4 +392,13 @@ function get_category_options()
     }
 
     return $options;
-}   
+}
+
+function enrol_ldapcohorts_supports($feature)
+{
+    switch($feature) {
+        case ENROL_RESTORE_TYPE: return ENROL_RESTORE_NOUSERS;
+
+        default: return null;
+    }
+}

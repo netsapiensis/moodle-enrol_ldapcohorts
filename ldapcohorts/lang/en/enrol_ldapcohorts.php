@@ -1,6 +1,6 @@
 <?php
 
-$string['auth_ldap_noconnect_all'] = 'LDAP-module cannot connect to any servers: {$a}';
+$string['auth_ldap_noconnect_all'] = 'LDAP-module cannot connect to any servers';
 
 $string['bind_dn'] = 'If you want to use a bind user to search users, specify it here. Someting like \'cn=ldapuser,ou=public,o=org\'';
 $string['bind_dn_key'] = 'Bind user distinguished name';
@@ -23,6 +23,8 @@ $string['cohort_lookup'] = 'Cohort lookup settings';
 $string['cohort_name'] = 'LDAP attribute to get the cohort name from';
 $string['cohort_name_key'] = 'Cohort name';
 $string['cohort_no_users'] = 'no users found';
+$string['cohort_member_attribute'] = 'Group membership attribute in cohort entry. This denotes the attribute of the cohort which should be used to search users. Usual values: \'member\', \'uid\'';
+$string['cohort_member_attribute_key'] = 'Cohort member attribute';
 $string['cohort_search_sub'] = 'Search cohorts from subcontexts';
 $string['cohort_sync_users'] = 'Synchronizing users...';
 $string['connectingldap'] = 'Connecting ldap...';
