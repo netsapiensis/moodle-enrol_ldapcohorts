@@ -39,7 +39,7 @@ class admin_setting_ldapcohort_trim_lower extends admin_setting_configtext
             return $validated;
         }
         if ($this->lowercase) {
-            $data = moodle_strtolower($data);
+            $data = core_text::strtolower($data);
         }
         return ($this->config_write($this->name, trim($data)) ? '' : get_string('errorsetting', 'admin'));
     }
