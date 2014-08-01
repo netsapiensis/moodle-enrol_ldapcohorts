@@ -122,7 +122,7 @@ class enrol_ldapcohorts_plugin extends enrol_plugin
                 continue;
             }
 
-            $records = ldap_get_entries_moodle($ldapconnection, $ldap_result);
+            $records = $this->_flatten(ldap_get_entries($ldapconnection, $ldap_result));
 
             foreach ($records as $cohort) {
                 $cohort = array_change_key_case($cohort, CASE_LOWER);
