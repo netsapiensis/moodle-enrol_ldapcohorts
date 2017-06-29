@@ -36,7 +36,7 @@ if ($ADMIN->fulltree) {
         $settings->add(new admin_setting_heading('enrol_ldap_cohort_server_settings', get_string('server_settings', 'enrol_ldapcohorts'), ''));
         $settings->add(new admin_setting_configtext('enrol_ldapcohorts/host_url', get_string('host_url_key', 'enrol_ldapcohorts'), get_string('host_url', 'enrol_ldapcohorts'), ''));
         $settings->add(new admin_setting_configselect('enrol_ldap/start_tls', get_string('start_tls_key', 'auth_ldap'), get_string('start_tls', 'auth_ldap'), 0, $yesno));
-        $settings->add(new admin_setting_configtext_trim_lower('enrol_ldap/ldapencoding', get_string('ldap_encoding_key', 'enrol_ldap'), get_string('ldap_encoding', 'enrol_ldap'), 'utf-8'));
+        $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldap/ldapencoding', get_string('ldap_encoding_key', 'enrol_ldap'), get_string('ldap_encoding', 'enrol_ldap'), 'utf-8'));
         // Set LDAPv3 as the default. Nowadays all the servers support it and it gives us some real benefits.
         $options = array(3=>'3', 2=>'2');
         $settings->add(new admin_setting_configselect('enrol_ldapcohorts/ldap_version', get_string('version_key', 'enrol_ldapcohorts'), get_string('version', 'enrol_ldapcohorts'), 3, $options));
@@ -44,7 +44,7 @@ if ($ADMIN->fulltree) {
         
         //--- bind settings
         $settings->add(new admin_setting_heading('enrol_ldapcohorts_bind_settings', get_string('bind_settings', 'enrol_ldapcohorts'), ''));
-        $settings->add(new admin_setting_configtext_trim_lower('enrol_ldapcohorts/bind_dn', get_string('bind_dn_key', 'enrol_ldapcohorts'), get_string('bind_dn', 'enrol_ldapcohorts'), ''));
+        $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldapcohorts/bind_dn', get_string('bind_dn_key', 'enrol_ldapcohorts'), get_string('bind_dn', 'enrol_ldapcohorts'), ''));
         $settings->add(new admin_setting_configpasswordunmask('enrol_ldapcohorts/bind_pw', get_string('bind_pw_key', 'enrol_ldapcohorts'), get_string('bind_pw', 'enrol_ldapcohorts'), ''));
         
         //--- cohort lookup settings
