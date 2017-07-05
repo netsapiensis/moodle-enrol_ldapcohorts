@@ -77,3 +77,5 @@ $string['user_type'] = 'Select how users are stored in LDAP. This setting also s
 $string['user_type_key'] = 'User type';
 $string['version'] = 'The version of the LDAP protocol your server is using';
 $string['version_key'] = 'Version';
+$string['username_termination_key'] = 'Username termination';
+$string['username_termination'] = 'Temination added to the end of the username when imported';

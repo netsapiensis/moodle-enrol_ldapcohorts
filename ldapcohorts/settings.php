@@ -78,6 +78,7 @@ if ($ADMIN->fulltree) {
         $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldapcohorts/user_attribute', get_string('user_attribute_key', 'enrol_ldapcohorts'), get_string('user_attribute', 'enrol_ldapcohorts'), '', true));
         $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldapcohorts/user_idnumber', get_string('user_idnumber_key', 'enrol_ldapcohorts'), get_string('user_idnumber', 'enrol_ldapcohorts'), 'uidnumber', true));
         $settings->add(new admin_setting_configtext('enrol_ldapcohorts/user_objectclass', get_string('objectclass_key', 'enrol_ldapcohorts'), get_string('user_objectclass', 'enrol_ldapcohorts'), ''));
+		$settings->add(new admin_setting_configtext('enrol_ldapcohorts/username_termination', get_string('username_termination_key', 'enrol_ldapcohorts'), get_string('username_termination', 'enrol_ldapcohorts'), '@lu.se'));
         
     }
 }

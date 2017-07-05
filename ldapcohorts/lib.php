@@ -240,7 +240,8 @@ class enrol_ldapcohorts_plugin extends enrol_plugin
                     continue;
                 }
 
-                $moodle_user = $DB->get_record('user', array('username' => $ldap_user['uid'][0]));
+				$username_termination = $this->get_config('username_termination');
+                $moodle_user = $DB->get_record('user', array('username' => $ldap_user['uid'][0].trim($username_termination)));
                 if (empty($moodle_user)) {
                     if (false != ($userid = $this->create_user($ldap_user))) {
                         $moodle_user = $DB->get_record('user', array('id' => $userid));
@@ -277,8 +278,10 @@ class enrol_ldapcohorts_plugin extends enrol_plugin
         global $CFG, $DB;
 
         $user = new stdClass();
-        $user->username = trim(core_text::strtolower($ldap_user['uid'][0]));
-
+        
+		$username_termination = $this->get_config('username_termination');
+		$user->username = trim(core_text::strtolower($ldap_user['uid'][0])).trim($username_termination);
+		
         $values = array(
             'givenname' => 'firstname',
             'sn' => 'lastname',
