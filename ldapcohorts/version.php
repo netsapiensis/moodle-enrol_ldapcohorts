@@ -1,7 +1,7 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version  = 2017071300;
+$plugin->version  = 2017071302;
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'LDAP Cohort Synchronization';
 $plugin->component = 'enrol_ldapcohorts';

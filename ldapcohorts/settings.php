@@ -94,7 +94,7 @@ if ($ADMIN->fulltree) {
             if (is_enabled_auth($auth)) {
                 $authoptions[$enabled][$auth] = get_string('pluginname', "auth_{$auth}");
             } else {
-                $authoptions[$disabled][$auth] = get_string('pluginname', "auth_{$auth}");
+                $authoptions[$disabled][$auth] = get_string('pluginname', "auth_{$auth}").' ['.get_string('auth_disabled', 'enrol_ldapcohorts').']';
             }
 			if ($auth=='shibboleth') {
 				$defaultauth = $auth;
@@ -104,6 +104,8 @@ if ($ADMIN->fulltree) {
 			$defaultauth = end($authoptions[$enabled]);
 		}
 		
-        $settings->add(new admin_setting_configselect_optgroup('enrol_ldapcohorts/user_auth', get_string('user_auth_key', 'enrol_ldapcohorts'), get_string('user_auth', 'enrol_ldapcohorts'), $defaultauth, $authoptions));
+		$authoptions = array_merge($authoptions[$enabled], $authoptions[$disabled]);
+		
+        $settings->add(new admin_setting_configselect('enrol_ldapcohorts/user_auth', get_string('user_auth_key', 'enrol_ldapcohorts'), get_string('user_auth', 'enrol_ldapcohorts'), $defaultauth, $authoptions));
     }
 }

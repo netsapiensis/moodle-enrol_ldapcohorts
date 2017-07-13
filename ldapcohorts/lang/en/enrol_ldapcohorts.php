@@ -82,3 +82,4 @@ $string['username_termination_key'] = 'Username termination';
 $string['username_termination'] = 'Temination added to the end of the username when imported';
 $string['user_auth'] = 'Choose an authentication method for the imported users';
 $string['user_auth_key'] = 'Authentication method';
+$string['auth_disabled'] = 'Disabled';
