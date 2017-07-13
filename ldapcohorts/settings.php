@@ -78,7 +78,32 @@ if ($ADMIN->fulltree) {
         $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldapcohorts/user_attribute', get_string('user_attribute_key', 'enrol_ldapcohorts'), get_string('user_attribute', 'enrol_ldapcohorts'), '', true));
         $settings->add(new admin_setting_ldapcohort_trim_lower('enrol_ldapcohorts/user_idnumber', get_string('user_idnumber_key', 'enrol_ldapcohorts'), get_string('user_idnumber', 'enrol_ldapcohorts'), 'uidnumber', true));
         $settings->add(new admin_setting_configtext('enrol_ldapcohorts/user_objectclass', get_string('objectclass_key', 'enrol_ldapcohorts'), get_string('user_objectclass', 'enrol_ldapcohorts'), ''));
+
+		//--- user creation settings
+        $settings->add(new admin_setting_heading('enrol_ldap_cohort_user_creation', get_string('user_creation', 'enrol_ldapcohorts'), ''));
 		$settings->add(new admin_setting_configtext('enrol_ldapcohorts/username_termination', get_string('username_termination_key', 'enrol_ldapcohorts'), get_string('username_termination', 'enrol_ldapcohorts'), '@lu.se'));
-        
+		
+        $auths = core_component::get_plugin_list('auth');
+        $enabled = get_string('pluginenabled', 'core_plugin');
+        $disabled = get_string('plugindisabled', 'core_plugin');
+        $authoptions = array($enabled => array(), $disabled => array());
+		$defaultauth = null;
+        foreach ($auths as $auth => $unused) {
+            $authinst = get_auth_plugin($auth);
+
+            if (is_enabled_auth($auth)) {
+                $authoptions[$enabled][$auth] = get_string('pluginname', "auth_{$auth}");
+            } else {
+                $authoptions[$disabled][$auth] = get_string('pluginname', "auth_{$auth}");
+            }
+			if ($auth=='shibboleth') {
+				$defaultauth = $auth;
+			}
+        }
+		if (empty($defaultauth)) {
+			$defaultauth = end($authoptions[$enabled]);
+		}
+		
+        $settings->add(new admin_setting_configselect_optgroup('enrol_ldapcohorts/user_auth', get_string('user_auth_key', 'enrol_ldapcohorts'), get_string('user_auth', 'enrol_ldapcohorts'), $defaultauth, $authoptions));
     }
 }

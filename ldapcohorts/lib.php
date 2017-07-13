@@ -309,7 +309,7 @@ class enrol_ldapcohorts_plugin extends enrol_plugin
         // Prep a few params
         $user->timecreated = $user->timemodified = time();
         $user->confirmed = 1;
-        $user->auth = 'ldap';
+        $user->auth = $this->get_config('user_auth');
         $user->mnethostid = $CFG->mnet_localhost_id;
 
         if (isset($user->suspended)) {

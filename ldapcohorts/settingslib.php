@@ -44,3 +44,14 @@ class admin_setting_ldapcohort_trim_lower extends admin_setting_configtext
         return ($this->config_write($this->name, trim($data)) ? '' : get_string('errorsetting', 'admin'));
     }
 }
+
+/*
+	BUGFIX FOR Moodle3.3 admin_setting_configselect using option groups
+	Warning: array_merge(): Argument #1 is not an array in [..]\lib\adminlib.php on line 2966
+*/
+class admin_setting_configselect_optgroup extends admin_setting_configselect {
+	public function __construct($name, $visiblename, $description, $defaultsetting, $choices) {
+		$this->choices = array();
+        parent::__construct($name, $visiblename, $description, $defaultsetting, $choices);
+    }
+}
